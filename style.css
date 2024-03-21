@@ -162,4 +162,9 @@ h1 {
    header {
     height: 50vh;
   }
+  h1{
+    font-size:3rem;
+  }
+  .number{
+    font-size:5rem;
 }
