@@ -167,4 +167,11 @@ h1 {
   }
   .number{
     font-size:5rem;
+    border-radius:50%;
+  }
+  .message {
+  margin-bottom: 4rem;
+  height: 3rem;
+  }
 }
+  
