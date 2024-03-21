@@ -174,5 +174,8 @@ h1 {
   height: 3rem;
   display: inline-block;
   }
+  .label-score {
+  margin-top: 2rem;
+}
 }
   
