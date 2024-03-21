@@ -13,7 +13,7 @@ document.querySelector('.check').addEventListener('click', function () {
   //
   if (guess == secretNumber) {
     mes('Thắng rồi nè! Làm thêm phát nữa đi');
-    // document.querySelector('.guess').textContent = 0;
+    document.querySelector('.number').textContent = secretNumber;
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
