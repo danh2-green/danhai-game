@@ -172,6 +172,7 @@ h1 {
   .message {
   margin-bottom: 4rem;
   height: 3rem;
+  display: inline-block;
   }
 }
   
