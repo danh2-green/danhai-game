@@ -159,4 +159,7 @@ h1 {
     right: 2rem;
     color: red;
   }
+   header {
+    height: 50vh;
+  }
 }
