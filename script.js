@@ -78,7 +78,7 @@ document.querySelector('.check').addEventListener('click', function () {
       mes(`Là ${secretNumber} đó đồ ngốc! Đã đen lại còn gà nữa!`);
     } else if (guess === secretNumber) {
       document.querySelector('.number').style.animationIterationCount = '0';
-      mes('Tí thì thua! Làm thêm phát nữa đi');
+      mes('Còn không làm được nữa thì chịu! Chơi thêm phát nữa đi');
     }
   }
 });
