@@ -70,7 +70,7 @@ document.querySelector('.check').addEventListener('click', function () {
     x = score;
     document.querySelector('.score').textContent = score;
     //
-    cssNum(secretNumber, '0.025s');
+    cssNum(secretNumber, '0.1s');
     if (guess !== secretNumber && score < 1) {
       display('none');
       againSt('4px solid #fff', '80%', '2rem', 'yellow');
