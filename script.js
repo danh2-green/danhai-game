@@ -48,6 +48,7 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.width = '100%';
     display('none');
     againSt('4px solid #fff', '80%', '2rem', 'pink');
+    cssNum(secretNumber, '0s');
   } else if (guess !== secretNumber) {
     if (guess <= 22 && guess > 0) {
       mes(guess > secretNumber ? '📈 Thấp thôi!' : '📉 Lên nữa!');
