@@ -188,7 +188,10 @@ h1 {
     color: red;
   }
   header {
-    height: 50vh;
+    height: 45vh;
+  }
+  main {
+    height: 55vh;
   }
   h1 {
     font-size: 3rem;
@@ -200,5 +203,13 @@ h1 {
   }
   .label-score {
     margin-top: 2rem;
+  }
+  .number {
+    background: #eee;
+    color: #333;
+    font-size: 5rem;
+    width: 13rem;
+    padding: 2rem 0rem;
+    border-radius: 50%;
   }
 }
