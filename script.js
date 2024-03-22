@@ -1,8 +1,13 @@
 'use strict';
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
+console.log(secretNumber);
+
 document.querySelector('.number').textContent = '?';
 let score = 20;
 let highscore = 0;
+let randScore = Math.trunc(Math.random() * 9) + 10;
+console.log(randScore);
+let x = randScore;
 
 const mes = function (message) {
   document.querySelector('.message').textContent = message;
@@ -26,9 +31,6 @@ const cssNum = function (text, time) {
   // document.querySelector('.againSt').style.bottom = bot;
   // document.querySelector('.againSt').style.backgroundColor = brcl;
 };
-const randScore = Math.trunc(Math.random() * 9) + 10;
-console.log(randScore);
-let x = randScore;
 
 const gues = (document.querySelector('.guess').value = '');
 // console.log(gues, typeof gues);
@@ -39,16 +41,15 @@ document.querySelector('.check').addEventListener('click', function () {
   //
   if (guess === secretNumber) {
     mes('Thắng rồi nè! Làm thêm phát nữa đi');
-    document.querySelector('.number').textContent = secretNumber;
-    if (score > highscore) {
-      highscore = score;
-      document.querySelector('.highscore').textContent = highscore;
-    }
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '100%';
     display('none');
     againSt('4px solid #fff', '80%', '2rem', 'pink');
     cssNum(secretNumber, '0s');
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   } else if (guess !== secretNumber) {
     if (guess <= 22 && guess > 0) {
       mes(guess > secretNumber ? '📈 Thấp thôi!' : '📉 Lên nữa!');
@@ -78,15 +79,15 @@ document.querySelector('.check').addEventListener('click', function () {
       cssNum(secretNumber, '0s');
       mes(`Là ${secretNumber} đó đồ ngốc! Đã đen lại còn gà nữa!`);
     } else if (guess === secretNumber) {
-      document.querySelector('.number').style.animationIterationCount = '0';
       mes('Còn không làm được nữa thì chịu! Chơi thêm phát nữa đi');
+      cssNum(secretNumber, '0s');
     }
   }
 });
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-
+  randScore = Math.trunc(Math.random() * 9) + 10;
   // document.querySelector('.message').textContent = 'Start guessing...';
   mes('Đoán tiếp nào...');
   document.querySelector('.score').textContent = score;
