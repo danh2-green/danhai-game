@@ -3,15 +3,41 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = '?';
 let score = 20;
 let highscore = 0;
+
 const mes = function (message) {
   document.querySelector('.message').textContent = message;
 };
+const display = function (display) {
+  document.querySelector('.guess').style.display = display;
+  document.querySelector('.check').style.display = display;
+};
+const agEnd = function (display) {
+  document.querySelector('.agEnd').style.display = display;
+};
+const againSt = function (bor, top, bot, brcl) {
+  document.querySelector('.againSt').style.border = bor;
+  document.querySelector('.againSt').style.top = top;
+  document.querySelector('.againSt').style.bottom = bot;
+  document.querySelector('.againSt').style.backgroundColor = brcl;
+};
+const cssNum = function (text, time) {
+  document.querySelector('.number').style.animationDuration = time;
+  document.querySelector('.number').textContent = text;
+  // document.querySelector('.againSt').style.bottom = bot;
+  // document.querySelector('.againSt').style.backgroundColor = brcl;
+};
+const randScore = Math.trunc(Math.random() * 9) + 10;
+console.log(randScore);
+let x = randScore;
+
+const gues = (document.querySelector('.guess').value = '');
+// console.log(gues, typeof gues);
+//
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   const guessBool = Boolean(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
   //
-  if (guess == secretNumber) {
+  if (guess === secretNumber) {
     mes('Thắng rồi nè! Làm thêm phát nữa đi');
     document.querySelector('.number').textContent = secretNumber;
     if (score > highscore) {
@@ -20,7 +46,9 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '100%';
-  } else if (guess != secretNumber) {
+    display('none');
+    againSt('4px solid #fff', '80%', '2rem', 'pink');
+  } else if (guess !== secretNumber) {
     if (guess <= 22 && guess > 0) {
       mes(guess > secretNumber ? '📈 Thấp thôi!' : '📉 Lên nữa!');
     } else {
@@ -32,14 +60,28 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     score--;
     document.querySelector('.score').textContent = score;
-    if (score <= Math.trunc(Math.random() * 9) + 10) {
-      mes('Ngây thơ quá! Cậu nghĩ tớ thật sự sẽ cho cậu 20 mạng ư?');
-      score = 0;
-      document.querySelector('.score').textContent = score;
+  }
+  //Mạng cuối và lúc thua cuộc
+  if (score <= randScore) {
+    mes('Ngây thơ quá! Cậu nghĩ tớ thật sự sẽ cho cậu 20 mạng ư?');
+
+    // document.querySelector('.message').style.marginBottom = '8rem';
+    score = score - x + 1;
+    x = score;
+    document.querySelector('.score').textContent = score;
+    //
+    cssNum(secretNumber, '0.025s');
+    if (guess !== secretNumber && score < 1) {
+      display('none');
+      againSt('4px solid #fff', '80%', '2rem', 'yellow');
+      cssNum(secretNumber, '0s');
+      mes(`Là ${secretNumber} đó đồ ngốc! Đã đen lại còn gà nữa!`);
+    } else if (guess === secretNumber) {
+      document.querySelector('.number').style.animationIterationCount = '0';
+      mes('Tí thì thua! Làm thêm phát nữa đi');
     }
   }
 });
-
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -47,11 +89,14 @@ document.querySelector('.again').addEventListener('click', function () {
   // document.querySelector('.message').textContent = 'Start guessing...';
   mes('Đoán tiếp nào...');
   document.querySelector('.score').textContent = score;
-  document.querySelector('.number').textContent = '?';
   document.querySelector('.guess').value = '';
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
+  cssNum('?', '0s');
+  display('inline-block');
+  againSt('4px solid #fff', '2rem', '85%', '#fff');
 });
+
 document.querySelector('.guess').addEventListener('click', function () {
   document.querySelector('.guess').value = '';
 });
